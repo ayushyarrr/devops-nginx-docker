@@ -1,0 +1,23 @@
+# Ignore Python virtual environments
+.venv/
+__pycache__/
+*.pyc
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore OS junk
+.DS_Store
+Thumbs.db
+
+# Ignore build artifacts
+*.log
+*.lock
+*.swp
+
+# Ignore Python dependency files
+uv.lock
+*.egg-info/
+
+# Ignore Go build files
+main
