@@ -1,60 +1,72 @@
-🚀 DevOps Internship Assignment – Nginx Reverse Proxy + Docker
+# 🚀 DevOps Internship Assignment – Nginx Reverse Proxy + Docker
+
 This project sets up a Docker Compose-based microservice system with an Nginx reverse proxy routing traffic to two backend services: a Golang app and a Python app.
 
-📁 Project Structure
-css
-Copy code
-.
+## 📁 Project Structure
+
 ├── docker-compose.yml
 ├── nginx
-│   ├── nginx.conf
-│   └── Dockerfile
+│ ├── nginx.conf
+│ └── Dockerfile
 ├── service_1
-│   ├── Dockerfile
-│   └── main.go
+│ ├── .dockerignore
+│ ├── Dockerfile
+│ ├── main.go
+│ └── README.md
 ├── service_2
-│   ├── Dockerfile
-│   └── app.py
+│ ├── .dockerignore
+│ ├── .python-version
+│ ├── Dockerfile
+│ ├── README.md
+│ ├── app.py
+│ ├── pyproject.toml
+│ ├── uv.lock
+│ └── .venv/
 └── README.md
-⚙️ Setup Instructions
-Clone this repository
 
-bash
-Copy code
+
+## ⚙️ Setup Instructions
+
+1. Clone this repository
+
+```bash
 git clone https://github.com/ayushyarrr/devops-nginx-docker.git
 cd devops-nginx-docker
-Build and start the system
-
-bash
-Copy code
+```
+2. Build and start the system
+```bash
 docker compose up --build
-Wait for services to become healthy
-Check with:
-
-bash
-Copy code
+```
+3. Wait for the services to become healthy (check with:)
+```bash
 docker ps
-You should see both services marked as healthy.
+```
+***You should see both services marked as healthy.
 
-Access services via Nginx reverse proxy:
+4. Access services via Nginx reverse proxy:
 
-http://localhost:8080/service1/hello → Golang Service
+Golang Service:
+http://localhost:8080/service1/hello
 
-http://localhost:8080/service2/ping → Python Service
+Python Service:
+http://localhost:8080/service2/ping
 
-Stop everything
+5. To stop everything:
 
-bash
-Copy code
+```bash
 docker compose down
+```
+
+
 🔁 Routing via Nginx
-The Nginx container acts as a reverse proxy, routing:
+The Nginx container acts as a reverse proxy, routing requests:
 
 /service1/ → service_1 (Go app on port 8001)
 
 /service2/ → service_2 (Python app on port 8002)
 
-Logs each request with timestamp and request path using custom Nginx access.log.
+It also logs each request with timestamp and request path using a custom Nginx access.log format.
+
 
 ✅ Features
 🐳 Fully containerized setup using Docker Compose
@@ -67,15 +79,19 @@ Logs each request with timestamp and request path using custom Nginx access.log.
 
 🧪 One-command startup: docker compose up --build
 
+
 ✨ Bonus
 Health checks implemented via /hello and /ping endpoints
 
-Nginx logs all incoming requests in custom format
+Nginx logs all incoming requests in a custom format
+
 
 🧠 Notes
-Nginx runs inside a Docker container (not host)
+Nginx runs inside a Docker container (not on the host)
 
 Uses bridge networking only (no host networking)
 
 Tested on Docker Desktop (Linux containers)
+
+
 
